@@ -1,12 +1,11 @@
 public class Player  {
-    public String name;
-    public String playerClass;
-    public int health;
-    public int level;
-    public int lootCount;
+    protected String name;
+    protected String playerClass;
+    protected int health;
+    protected int level;
+    protected int lootCount;
 
         Player(){ // default constructor (added for successful inheritance)
-
         }
 
         Player(String name, String playerClass) {   //constructor with parameters
@@ -17,31 +16,22 @@ public class Player  {
             this.lootCount = 0;
         }
 
-        public static void DisplayBasicInfo (String name, String playerClass){
+        public void DisplayBasicInfo (String name, String playerClass){
             System.out.println("Your name is " + name);
             System.out.println("Your class is " + playerClass);
         }
-        public static void DisplayAdvancedInfo ( int health, int level, int lootCount){
+        public void DisplayAdvancedInfo ( int health, int level, int lootCount){
             System.out.println("Your health is " + health);
             System.out.println("Your level is " + level);
             System.out.println("The loot you've got numbers " + lootCount);
         }
-
-
-        //public int getLevel(){  //getter and setter. have not learned this at uni, same functionality
-        //    return level;
-        // }
-        //public int setLevel(){
-        //   return level++;
-        //   }
 
         public void attackEnemy (int input){
             if (input == 1) {
                 level = level + 1;
                 lootCount = lootCount + 1;
                 System.out.println("You have vanquished your enemy!");
-                //getLevel();
-                // setLevel();
+
             } else if (input == 0) {
                 System.out.println("You have been defeated!");
                 health -= 30;

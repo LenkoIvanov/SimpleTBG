@@ -10,7 +10,7 @@ public static int ROLL;
         System.out.println("Enter the name of your character: ");
         String name = INPUT.next();
 
-        String playerClass = "";
+        String playerClass;
         System.out.println("Choose a class: ");
         System.out.println("Barbarian \n" + "Knight \n" + "Assassin \n" + "Thief \n" + "Magician \n");
         int classNum = INPUT.nextInt();
@@ -58,7 +58,6 @@ public static int ROLL;
         System.out.println("You embark on your first quest. While walking trough the woods, " +
                 "you get ambushed by two thieves. " +
                 "Slay them!");
-        //int rollInput;
 
         for(int enemyCount = 2; enemyCount > 0;){
             System.out.println("0 or 1?");
@@ -108,7 +107,6 @@ public static int ROLL;
             }
             else{
                 System.out.println("Wrong input! Try again!");
-                actionInput = INPUT.nextInt();
             }
             System.out.println("Next action?");
             actionInput = INPUT.nextInt();
@@ -131,10 +129,12 @@ public static int ROLL;
 
         while(enemyCount > 0){
             if(actionInput == 1){
+                System.out.println("0 or 1?");
                 ROLL = INPUT.nextInt();
                 player1.attackEnemy(ROLL);
             }
             else if(actionInput == 2){
+                System.out.println("0 or 1?");
                 ROLL = INPUT.nextInt();
                 npc1.npcAttack(ROLL, companionName);
                 if(npc1.health <= 0){
@@ -149,22 +149,26 @@ public static int ROLL;
                 break;
             }
             enemyCount--;
+            System.out.println("Next action?");
             actionInput = INPUT.nextInt();
         }
 
         System.out.println("The battle is over.");
         if(npc1 != null){                       // check if object exists
             System.out.println("You and your companion feast after the battle.");
+            System.out.println("You take a bite. 0 or 1?");
             ROLL = INPUT.nextInt();
             player1.Eat(ROLL);
+            System.out.println("Your companion takes a bite. 0 or 1?");
             ROLL = INPUT.nextInt();
             npc1.Eat(ROLL);
             if(npc1.health <= 0){
                 npc1 = null;
             }
         }
-        else if(npc1 == null){
+        else {
             System.out.println("You dine alone.");
+            System.out.println("You take a bite. 0 or 1?");
             ROLL = INPUT.nextInt();
             player1.Eat(ROLL);
         }
@@ -185,8 +189,8 @@ public static int ROLL;
                 }
             }
             }
-        for(int i = 0; i < treasure.length; i++){
-            System.out.println(treasure[i]);
+        for(String i : treasure){
+            System.out.println(i);
         }
 
         System.out.println("After bringing the treasure back to the tavern, you decide to " +
